@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>홈</h2>
+<div class="home-grid">
+    {% for category, articles in home_articles.items() %}
+    <div class="category-box">
+        <h3>{{ category }}</h3>
+        <ul>
+            {% for idx, article in articles %}
+            <li class="article-list-item">
+                <a href="/article/{{ idx }}" class="article-title-link">
+                    {{ article.get('검색제목', article['제목']) }}
+                </a>
+                <small class="article-summary">{{ article['요약'] }}</small>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
